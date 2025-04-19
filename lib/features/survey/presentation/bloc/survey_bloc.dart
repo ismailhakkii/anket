@@ -3,8 +3,6 @@ import 'package:anket/features/survey/domain/entities/survey.dart';
 import 'package:anket/features/survey/domain/usecases/get_surveys.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../domain/entities/survey.dart';
-import '../../../domain/usecases/get_surveys.dart';
 
 part 'survey_event.dart';
 part 'survey_state.dart';

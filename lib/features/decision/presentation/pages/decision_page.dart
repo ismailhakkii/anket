@@ -15,6 +15,7 @@ class _DecisionPageState extends State<DecisionPage> {
   final StreamController<int> _selected = StreamController<int>();
   List<String> _options = [];
   bool _spinning = false;
+  String? _resultText;  // store result to show after animation
 
   @override
   void initState() {
@@ -39,10 +40,10 @@ class _DecisionPageState extends State<DecisionPage> {
               setState(() { _options = state.options; });
             } else if (state is DecisionSpun) {
               _selected.add(state.result.selectedIndex);
-              setState(() { _spinning = false; });
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Sonuç: ${state.result.options[state.result.selectedIndex]}')),
-              );
+              setState(() {
+                _spinning = false;
+                _resultText = state.result.options[state.result.selectedIndex];
+              });
             } else if (state is DecisionSpinning) {
               setState(() { _spinning = true; });
             } else if (state is DecisionError) {
@@ -66,6 +67,13 @@ class _DecisionPageState extends State<DecisionPage> {
                   height: 300,
                   child: FortuneWheel(
                     selected: _selected.stream,
+                    onAnimationEnd: () {
+                      if (_resultText != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Sonuç: $_resultText')),
+                        );
+                      }
+                    },
                     items: [ for (var opt in _options) FortuneItem(child: Text(opt)) ],
                   ),
                 ),
