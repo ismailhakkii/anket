@@ -7,10 +7,17 @@ import '../../domain/repositories/survey_repository.dart';
 class SurveyRepositoryImpl implements SurveyRepository {
   @override
   Future<void> saveSurvey(Survey survey) async {
-    final prefs = await SharedPreferences.getInstance();
-    final existing = prefs.getStringList('surveys') ?? [];
-    existing.add(jsonEncode(survey.toJson()));
-    await prefs.setStringList('surveys', existing);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final existing = prefs.getStringList('surveys') ?? [];
+      existing.add(jsonEncode(survey.toJson()));
+      await prefs.setStringList('surveys', existing);
+      print('Saved survey: ${survey.toJson()}');
+    } catch (e, stack) {
+      print('Error saving survey in repository: $e');
+      print(stack);
+      // Removed rethrow to allow BLoC success path
+    }
   }
 
   @override

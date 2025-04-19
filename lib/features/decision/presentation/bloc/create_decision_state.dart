@@ -1,4 +1,5 @@
-part of 'create_decision_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 enum CreateDecisionStatus { initial, submitting, success, failure }
 

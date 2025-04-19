@@ -10,9 +10,11 @@ import 'features/survey/presentation/pages/create_survey_page.dart';
 import 'features/decision/presentation/pages/create_decision_page.dart';
 import 'features/survey/presentation/bloc/create_survey_bloc.dart';
 import 'features/decision/presentation/bloc/create_decision_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  GoogleFonts.config.allowRuntimeFetching = false;  // disable network font fetch
   await di.init();
   runApp(const MyApp());
 }
@@ -29,6 +31,15 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Anket & Karar Uygulaması',
+        themeMode: ThemeMode.system,
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+            brightness: Brightness.dark,
+          ),
+        ),
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
@@ -66,4 +77,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Note: Create HomePage, SurveyPage, and DecisionPage in features/.../presentation/pages

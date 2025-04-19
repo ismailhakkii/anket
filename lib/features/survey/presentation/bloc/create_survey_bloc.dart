@@ -1,9 +1,7 @@
-import 'package:anket/features/survey/domain/usecases/save_survey.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../domain/entities/survey.dart';
-import '../../../domain/usecases/save_survey.dart';
-import '../../domain/entities/survey.dart';
+import 'package:anket/features/survey/domain/usecases/save_survey.dart';
+import 'package:anket/features/survey/domain/entities/survey.dart';
 import 'create_survey_event.dart';
 import 'create_survey_state.dart';
 
