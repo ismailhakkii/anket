@@ -17,8 +17,18 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, '/create_survey'),
+              child: const Text('Yeni Anket Oluştur'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
               onPressed: () => Navigator.pushNamed(context, '/decision'),
               child: const Text('Karar Verme Çarkı'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, '/create_decision'),
+              child: const Text('Yeni Çark Oluştur'),
             ),
           ],
         ),

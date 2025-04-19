@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:confetti/confetti.dart';
 import '../bloc/decision_bloc.dart';
 
 class DecisionPage extends StatefulWidget {
@@ -16,16 +17,19 @@ class _DecisionPageState extends State<DecisionPage> {
   List<String> _options = [];
   bool _spinning = false;
   String? _resultText;  // store result to show after animation
+  late ConfettiController _confettiController;
 
   @override
   void initState() {
     super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 1));
     context.read<DecisionBloc>().add(LoadOptions());
   }
 
   @override
   void dispose() {
     _selected.close();
+    _confettiController.dispose();
     super.dispose();
   }
 
@@ -60,28 +64,43 @@ class _DecisionPageState extends State<DecisionPage> {
             if (_options.isEmpty) {
               return const Text('Hiç seçenek yok');
             }
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            return Stack(
+              alignment: Alignment.topCenter,
               children: [
-                SizedBox(
-                  height: 300,
-                  child: FortuneWheel(
-                    selected: _selected.stream,
-                    onAnimationEnd: () {
-                      if (_resultText != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Sonuç: $_resultText')),
-                        );
-                      }
-                    },
-                    items: [ for (var opt in _options) FortuneItem(child: Text(opt)) ],
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 300,
+                      child: FortuneWheel(
+                        selected: _selected.stream,
+                        onAnimationEnd: () {
+                          if (_resultText != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Sonuç: $_resultText')),
+                            );
+                            _confettiController.play();
+                          }
+                        },
+                        items: [ for (var opt in _options) FortuneItem(child: Text(opt)) ],
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton.icon(
+                      onPressed: _spinning ? null : () => context.read<DecisionBloc>().add(SpinDecisionEvent()),
+                      icon: const Icon(Icons.casino),
+                      label: _spinning ? const Text('Dönüyor...') : const Text('Çarkı Döndür'),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 24),
-                ElevatedButton.icon(
-                  onPressed: _spinning ? null : () => context.read<DecisionBloc>().add(SpinDecisionEvent()),
-                  icon: const Icon(Icons.casino),
-                  label: _spinning ? const Text('Dönüyor...') : const Text('Çarkı Döndür'),
+                // Confetti
+                ConfettiWidget(
+                  confettiController: _confettiController,
+                  blastDirectionality: BlastDirectionality.explosive,
+                  shouldLoop: false,
+                  colors: const [Colors.pink, Colors.purple, Colors.deepPurple],
+                  emissionFrequency: 0.6,
+                  numberOfParticles: 20,
                 ),
               ],
             );
