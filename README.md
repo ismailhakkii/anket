@@ -35,12 +35,19 @@ Modern ve görsel olarak etkileyici bir Flutter uygulaması: Anket oluşturma, k
 
 ## 📱 Ekran Görüntüleri
 
+
 Uygulamanın farklı ekranlarından görüntüler:
 
 - Açılış Ekranı ve Ana Sayfa (Kart Görünümü)
+![1. kart düzeni](image.png)
+![2. kart düzeni](image-1.png)
+
 - Ana Sayfa (Liste Görünümü) ve Tema Değiştirme
 - Karar Çarkı ve Sonuç Ekranı
+
 - Anket Oluşturma ve Katılım Ekranları
+
+![alt text](image-2.png)
 
 ## 🚀 Kurulum ve Çalıştırma
 
