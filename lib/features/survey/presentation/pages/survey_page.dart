@@ -73,18 +73,37 @@ class _SurveyPageState extends State<SurveyPage> {
                                 )),
                             const SizedBox(height: 8),
                             Center(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.deepPurple,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  borderRadius: BorderRadius.circular(32),
                                 ),
-                                onPressed: selectedOption == null
-                                    ? null
-                                    : () => ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text('Seçiminiz: $selectedOption', style: GoogleFonts.poppins())),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(32),
+                                    onTap: selectedOption == null ? null : () {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(content: Text('Seçiminiz: $selectedOption')),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 14),
+                                      child: Text(
+                                        'Gönder',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                child: Text('Gönder', style: GoogleFonts.poppins(color: Colors.white)),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
