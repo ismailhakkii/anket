@@ -2,7 +2,7 @@
 
 ![](assets/icons/app_icon.png)
 
-Modern ve görsel olarak etkileyici bir Flutter uygulaması: Anket oluşturma, karar çarkları ve kullanıcı dostu bir arayüz ile karar verme süreçlerinizi kolaylaştırın. Tinder benzeri kart tasarımı ve animasyonlu arayüzüyle dikkat çeken bu uygulama, yarışma standartlarında geliştirilmiştir.
+Modern ve görsel olarak etkileyici bir Flutter uygulaması: Anket oluşturma, karar çarkları ve kullanıcı dostu bir arayüz ile karar verme süreçlerinizi kolaylaştırın. Kendine has kart tasarımı ve animasyonlu arayüzüyle dikkat çeken bu uygulama karar verme süreçlerine birebirdir.
 
 ## ✨ Özellikler
 
@@ -15,10 +15,9 @@ Modern ve görsel olarak etkileyici bir Flutter uygulaması: Anket oluşturma, k
 - Tamamen özelleştirilebilir karar çarkları
 - Renkli ve görsel olarak etkileyici tasarım
 - Sürükleyici animasyonlar ve sonuç kutlaması
-- Metinlerin ters yazım sorunu düzeltildi
 
 ### 🎨 Tasarım ve Kullanıcı Deneyimi
-- **Tinder benzeri kart arayüzü** - Sürüklenebilir büyük kartlar
+- **Kart arayüzü** - Sürüklenebilir büyük kartlar
 - **İki farklı görünüm** - Kart veya liste görünümü arasında geçiş yapabilme
 - **Tema desteği** - Açık/koyu tema ve otomatik tema kaydı
 - **Etkileyici animasyonlar** - Lottie animasyonları ve özel geçiş efektleri
@@ -53,7 +52,7 @@ Uygulamanın farklı ekranlarından görüntüler:
 
 1. Projeyi klonlayın:
    ```bash
-   git clone <repo_url>
+   git clone <https://github.com/ismailhakkii/anket.git>
    cd anket
    ```
 
@@ -129,7 +128,7 @@ Ana sayfada iki farklı görünüm (kart/liste) arasında geçiş yapabilme öze
 
 Projeye katkıda bulunmak için pull request gönderebilir veya iyileştirmeler önerebilirsiniz. Hata raporları için issues oluşturabilirsiniz.
 
-## 📄 Lisans
+## ⭐ 
 
-BSD 3-Clause License
+Eğer projeyi beğendiyseniz yıldızlamayı unutmayın. :)
 
